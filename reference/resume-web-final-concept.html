@@ -1,0 +1,831 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="김동영 프론트엔드 개발자 웹 이력서" />
+  <meta name="color-scheme" content="light" />
+  <title>김동영 | Frontend Developer</title>
+  <style>
+    :root {
+      --canvas: #f5f6f7;
+      --paper: #ffffff;
+      --ink: #141a21;
+      --body: #37424e;
+      --muted: #6f7a86;
+      --faint: #9aa3ad;
+      --line: #dfe3e7;
+      --line-strong: #c9d0d7;
+      --accent: #235f91;
+      --accent-soft: #eef5fa;
+      --accent-line: #c9dfef;
+      --chip: #f0f2f4;
+      --success: #236d55;
+      --max: 1180px;
+      --sidebar: 292px;
+      --sans: Inter, Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", Arial, sans-serif;
+      --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--canvas);
+      font-family: var(--sans);
+      line-height: 1.72;
+      word-break: keep-all;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: inherit; text-underline-offset: 4px; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    ::selection { background: #d8eaf7; }
+    :focus-visible { outline: 3px solid rgba(35, 95, 145, .25); outline-offset: 3px; }
+
+    .skip-link {
+      position: fixed;
+      left: 14px;
+      top: 14px;
+      z-index: 100;
+      transform: translateY(-160%);
+      padding: 9px 12px;
+      border-radius: 7px;
+      background: var(--ink);
+      color: #fff;
+      font-size: 12px;
+      text-decoration: none;
+    }
+    .skip-link:focus { transform: translateY(0); }
+
+    .utility-bar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      border-bottom: 1px solid rgba(201, 208, 215, .82);
+      background: rgba(245, 246, 247, .92);
+      backdrop-filter: blur(16px);
+    }
+    .utility-inner {
+      width: min(calc(100% - 40px), var(--max));
+      min-height: 56px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      text-decoration: none;
+    }
+    .brand-mark {
+      width: 29px;
+      height: 29px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: var(--ink);
+      color: white;
+      font: 700 10px var(--mono);
+      letter-spacing: .04em;
+    }
+    .utility-actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .utility-actions a,
+    .utility-actions button {
+      border: 0;
+      padding: 0;
+      background: none;
+      color: #4d5965;
+      font: 650 12px var(--sans);
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .utility-actions a:hover,
+    .utility-actions button:hover { color: var(--accent); }
+    .utility-actions .download {
+      padding: 7px 11px;
+      border: 1px solid var(--line-strong);
+      border-radius: 7px;
+      background: var(--paper);
+      color: var(--ink);
+    }
+
+    .page {
+      width: min(calc(100% - 40px), var(--max));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: var(--sidebar) minmax(0, 1fr);
+      gap: clamp(48px, 7vw, 94px);
+      padding: 68px 0 104px;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 92px;
+      align-self: start;
+    }
+    .eyebrow {
+      margin: 0 0 13px;
+      color: var(--accent);
+      font: 750 10px var(--mono);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .identity h1 {
+      margin: 0;
+      font-size: clamp(42px, 5vw, 57px);
+      line-height: 1;
+      letter-spacing: -.058em;
+    }
+    .identity-role {
+      margin: 17px 0 0;
+      color: #27313b;
+      font-size: 17px;
+      font-weight: 780;
+      line-height: 1.5;
+      letter-spacing: -.02em;
+    }
+    .identity-summary {
+      margin: 18px 0 0;
+      color: #56616d;
+      font-size: 13.5px;
+      line-height: 1.82;
+    }
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 19px;
+      color: var(--success);
+      font-size: 11px;
+      font-weight: 760;
+    }
+    .status::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--success);
+      box-shadow: 0 0 0 4px rgba(35, 109, 85, .10);
+    }
+
+    .side-block {
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+    .side-label {
+      margin: 0 0 11px;
+      color: var(--faint);
+      font: 750 9px var(--mono);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .contact-list,
+    .skill-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .contact-list { display: grid; gap: 8px; }
+    .contact-list li { color: #4c5762; font-size: 12.5px; }
+    .contact-list a { text-decoration-color: #aeb6bf; }
+    .contact-note { color: var(--faint); font-size: 10px; }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+    .skill-list li {
+      padding: 5px 8px;
+      border: 1px solid #e1e5e9;
+      border-radius: 6px;
+      background: var(--paper);
+      color: #4c5762;
+      font: 650 9.5px var(--mono);
+    }
+    .page-nav { display: grid; gap: 7px; }
+    .page-nav a {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 11.5px;
+      text-decoration: none;
+    }
+    .page-nav a span { color: var(--faint); font: 10px var(--mono); }
+    .page-nav a:hover { color: var(--accent); }
+
+    .content { min-width: 0; max-width: 790px; }
+    .section {
+      scroll-margin-top: 90px;
+      padding-bottom: 57px;
+      margin-bottom: 57px;
+      border-bottom: 1px solid var(--line);
+    }
+    .section:last-child {
+      padding-bottom: 0;
+      margin-bottom: 0;
+      border-bottom: 0;
+    }
+    .section-title {
+      display: grid;
+      grid-template-columns: 126px minmax(0, 1fr);
+      gap: 24px;
+      align-items: baseline;
+      margin-bottom: 28px;
+    }
+    .section-index {
+      color: var(--faint);
+      font: 750 9.5px var(--mono);
+      letter-spacing: .1em;
+    }
+    .section-title h2 {
+      margin: 0;
+      font-size: 26px;
+      line-height: 1.3;
+      letter-spacing: -.035em;
+    }
+
+    .intro {
+      max-width: 740px;
+      color: var(--body);
+      font-size: 15px;
+      line-height: 1.96;
+    }
+    .intro p { margin: 0; }
+    .intro p + p { margin-top: 10px; }
+
+    .company {
+      position: relative;
+    }
+    .company-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: end;
+      padding-bottom: 22px;
+      border-bottom: 2px solid var(--ink);
+    }
+    .company-name-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 9px;
+    }
+    .company-name-line h3 {
+      margin: 0;
+      font-size: 29px;
+      line-height: 1.2;
+      letter-spacing: -.04em;
+    }
+    .company-role { color: #4e5964; font-size: 13px; }
+    .company-period {
+      color: var(--accent);
+      font: 750 10.5px var(--mono);
+      white-space: nowrap;
+    }
+
+    .project {
+      position: relative;
+      padding: 43px 0 46px 27px;
+      border-bottom: 1px solid var(--line);
+    }
+    .project:last-child { padding-bottom: 0; border-bottom: 0; }
+    .project::before {
+      content: "";
+      position: absolute;
+      left: 3px;
+      top: 52px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--paper);
+      border: 2px solid var(--accent);
+    }
+    .project:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      left: 6px;
+      top: 63px;
+      bottom: -10px;
+      width: 1px;
+      background: var(--line);
+    }
+    .project-kicker {
+      margin: 0 0 7px;
+      color: var(--accent);
+      font: 750 9px var(--mono);
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+    .project h4 {
+      margin: 0;
+      font-size: 21px;
+      line-height: 1.4;
+      letter-spacing: -.026em;
+    }
+    .project-description {
+      margin: 14px 0 0;
+      color: #53606b;
+      font-size: 13.5px;
+      line-height: 1.86;
+    }
+
+    .tech-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px 13px;
+      margin: 17px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .tech-list li {
+      position: relative;
+      padding-left: 10px;
+      color: #3f4b56;
+      font-size: 11px;
+      font-weight: 720;
+    }
+    .tech-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .75em;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #4f8fbf;
+      transform: translateY(-50%);
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 104px minmax(0, 1fr);
+      gap: 16px 24px;
+      margin-top: 27px;
+    }
+    .detail-label {
+      margin: 2px 0 0;
+      color: #66727e;
+      font-size: 11.5px;
+      font-weight: 820;
+    }
+    .detail-content { min-width: 0; }
+    .plain-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .plain-list li {
+      position: relative;
+      padding-left: 17px;
+      color: #34404b;
+      font-size: 13px;
+      line-height: 1.77;
+    }
+    .plain-list li + li { margin-top: 4px; }
+    .plain-list li::before {
+      content: "–";
+      position: absolute;
+      left: 0;
+      color: #75818d;
+    }
+
+    .service-result {
+      padding: 13px 15px;
+      border-left: 3px solid var(--accent-line);
+      background: #f7fafc;
+      color: #40505d;
+      font-size: 12.5px;
+      line-height: 1.78;
+    }
+    .service-result strong {
+      display: block;
+      margin-bottom: 3px;
+      color: #62707d;
+      font-size: 10px;
+      letter-spacing: .02em;
+    }
+    .service-result small {
+      display: block;
+      margin-top: 5px;
+      color: #89939d;
+      font-size: 10px;
+    }
+
+    .work-groups { display: grid; gap: 18px; }
+    .work-group h5 {
+      margin: 0 0 7px;
+      color: #53606c;
+      font-size: 11.5px;
+      font-weight: 840;
+    }
+
+    .additional-entry {
+      padding: 30px 0;
+      border-top: 1px solid var(--line);
+    }
+    .additional-entry:first-of-type { padding-top: 0; border-top: 0; }
+    .additional-entry h3 {
+      margin: 0;
+      font-size: 19px;
+      line-height: 1.42;
+      letter-spacing: -.023em;
+    }
+    .additional-entry .detail-grid { margin-top: 22px; }
+
+    .footer-contact {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: center;
+    }
+    .footer-contact p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12.5px;
+    }
+    .footer-contact a {
+      color: var(--accent);
+      font-size: 12.5px;
+      font-weight: 760;
+    }
+
+    @media (max-width: 920px) {
+      .page {
+        grid-template-columns: 1fr;
+        gap: 52px;
+        padding-top: 48px;
+      }
+      .sidebar {
+        position: static;
+        display: grid;
+        grid-template-columns: 1.15fr .85fr;
+        gap: 0 44px;
+      }
+      .identity { grid-column: 1 / -1; max-width: 680px; }
+      .page-nav { display: none; }
+      .content { max-width: none; }
+    }
+
+    @media (max-width: 660px) {
+      .utility-inner,
+      .page { width: min(calc(100% - 28px), var(--max)); }
+      .utility-actions button,
+      .utility-actions a:not(.download) { display: none; }
+      .page { padding-top: 36px; }
+      .sidebar { display: block; }
+      .identity h1 { font-size: 45px; }
+      .section-title { grid-template-columns: 1fr; gap: 6px; }
+      .company-head { grid-template-columns: 1fr; gap: 6px; align-items: start; }
+      .project { padding-left: 20px; }
+      .project::before { left: 0; }
+      .project:not(:last-child)::after { left: 3px; }
+      .detail-grid { grid-template-columns: 1fr; gap: 8px; }
+      .detail-label {
+        margin-top: 2px;
+        color: var(--accent);
+        font-size: 10.5px;
+      }
+      .footer-contact { grid-template-columns: 1fr; gap: 10px; }
+    }
+
+    @media print {
+      @page { size: A4; margin: 13mm 14mm; }
+      :root { --canvas: #fff; --paper: #fff; }
+      .utility-bar,
+      .page-nav,
+      .status,
+      .skip-link { display: none !important; }
+      body { background: #fff; font-size: 9.5pt; }
+      .page {
+        width: 100%;
+        display: block;
+        padding: 0;
+      }
+      .sidebar {
+        position: static;
+        display: grid;
+        grid-template-columns: 1.3fr .7fr;
+        gap: 24px;
+        padding-bottom: 18px;
+        margin-bottom: 24px;
+        border-bottom: 1px solid #bfc5cb;
+      }
+      .identity h1 { font-size: 30pt; }
+      .identity-summary { max-width: 520px; }
+      .side-block { margin-top: 13px; padding-top: 10px; }
+      .content { max-width: none; }
+      .section { padding-bottom: 25px; margin-bottom: 25px; }
+      .project { padding-top: 25px; padding-bottom: 27px; break-inside: auto; }
+      .project::before,
+      .project::after { display: none; }
+      .company-head,
+      .additional-entry,
+      .service-result { break-inside: avoid; }
+      .detail-grid { break-inside: avoid; }
+      a { text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#content">본문으로 이동</a>
+
+  <header class="utility-bar">
+    <div class="utility-inner">
+      <a class="brand" href="#top" aria-label="페이지 처음으로">
+        <span class="brand-mark" aria-hidden="true">DY</span>
+        <span>Kim Dongyoung</span>
+      </a>
+      <div class="utility-actions">
+        <a href="mailto:Dongykim414@gmail.com">이메일</a>
+        <button type="button" onclick="window.print()">인쇄</button>
+        <a class="download" href="260714_김동영_이력서.pdf">PDF 이력서 ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page" id="top">
+    <aside class="sidebar" aria-label="프로필과 연락처">
+      <div class="identity">
+        <p class="eyebrow">Frontend Developer</p>
+        <h1>김동영</h1>
+        <p class="identity-role">사용자 경험과 운영 효율을 함께 개선하는 프론트엔드 개발자</p>
+        <p class="identity-summary">
+          React와 TypeScript 기반의 공개 플랫폼, B2B 데이터 대시보드, 내부 운영 도구를 개발하고 운영했습니다.
+          서비스의 목적과 데이터 흐름을 이해하고, 팀이 유지보수하기 좋은 구조로 구현하는 것을 중요하게 생각합니다.
+        </p>
+        <span class="status">새로운 기회를 찾고 있습니다</span>
+      </div>
+
+      <section class="side-block">
+        <p class="side-label">Contact</p>
+        <ul class="contact-list">
+          <li><a href="mailto:Dongykim414@gmail.com">Dongykim414@gmail.com</a></li>
+          <li>Seoul, Korea</li>
+        </ul>
+      </section>
+
+      <section class="side-block">
+        <p class="side-label">Core stack</p>
+        <ul class="skill-list">
+          <li>React</li><li>TypeScript</li><li>JavaScript</li><li>Recoil</li><li>Redux</li>
+          <li>D3.js</li><li>Visx</li><li>Material UI</li><li>Axios</li><li>SCSS</li>
+          <li>Amplitude</li><li>AWS CloudWatch</li><li>Git</li><li>GitHub</li>
+        </ul>
+      </section>
+
+      <nav class="side-block page-nav" aria-label="페이지 목차">
+        <p class="side-label">On this page</p>
+        <a href="#about">소개 <span>01</span></a>
+        <a href="#experience">업무 경력 <span>02</span></a>
+        <a href="#additional">추가 경험 <span>03</span></a>
+        <a href="#contact">연락처 <span>04</span></a>
+      </nav>
+    </aside>
+
+    <div class="content" id="content">
+      <section class="section" id="about">
+        <header class="section-title">
+          <span class="section-index">01 / ABOUT</span>
+          <h2>소개</h2>
+        </header>
+        <div class="intro">
+          <p>
+            사용자가 편하게 이용할 수 있고, 팀이 유지보수하기 좋은 서비스를 만드는 것을 중요하게 생각합니다.
+            기능 구현에 그치지 않고 서비스의 목적과 운영 환경을 함께 고려하며 개발합니다.
+          </p>
+          <p>
+            업무에서는 근거를 바탕으로 의견을 나누고, 서로 다른 관점을 조율해 실행 가능한 결론을 만듭니다.
+            결정된 방향은 책임감을 가지고 실행하며, 동료들과 효율적으로 협업하는 개발자입니다.
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="experience">
+        <header class="section-title">
+          <span class="section-index">02 / EXPERIENCE</span>
+          <h2>업무 경력</h2>
+        </header>
+
+        <div class="company">
+          <header class="company-head">
+            <div class="company-name-line">
+              <h3>오늘의 웹툰</h3>
+              <span class="company-role">Frontend Developer</span>
+            </div>
+            <span class="company-period">2021.05 — 2025.02</span>
+          </header>
+
+          <article class="project">
+            <p class="project-kicker">B2B Data Product</p>
+            <h4>웹툰 성과 분석 및 마케팅 솔루션(웹툰 메트릭)</h4>
+            <p class="project-description">
+              웹툰메트릭은 웹툰 트렌드와 작품 성과를 분석하고, 광고 및 바이럴 캠페인 성과를 한 곳에서 확인할 수 있는
+              웹툰 마케팅 솔루션입니다. 웹툰 사업자와 개인 작가가 매출, 순위, 독자 지표를 바탕으로 마케팅 성과를 확인하고
+              홍보 전략을 수립할 수 있도록 서비스를 제공합니다.
+            </p>
+            <ul class="tech-list" aria-label="웹툰 메트릭 사용 기술">
+              <li>React</li><li>TypeScript</li><li>Recoil</li><li>Material-UI</li><li>D3.js</li><li>Visx</li><li>Axios</li>
+            </ul>
+
+            <div class="detail-grid">
+              <h5 class="detail-label">역할</h5>
+              <div class="detail-content">
+                <ul class="plain-list">
+                  <li>웹툰 트렌드 및 마케팅 솔루션 FE 개발 및 운영</li>
+                  <li>리포트 정보 구조와 데이터 시각화 UI 설계 및 구현</li>
+                  <li>유료 리포트 및 B2B 고객 시연 환경 개발</li>
+                </ul>
+              </div>
+
+              <h5 class="detail-label">서비스 성과</h5>
+              <div class="detail-content service-result">
+                <strong>웹툰메트릭을 활용한 마케팅 캠페인 결과</strong>
+                2024년 상반기 5개 캠페인에서 캠페인당 평균 독자 5,800명 획득, 평균 순위 20위 상승,
+                평균 매출 69% 증가를 기록했습니다.
+                <small>개인 개발 성과가 아닌 서비스 활용 사례입니다.</small>
+              </div>
+
+              <h5 class="detail-label">주요 업무</h5>
+              <div class="detail-content">
+                <ul class="plain-list">
+                  <li>유형별 웹툰 트렌드 검색 및 작품별 유료 분석 리포트 화면 개발</li>
+                  <li>웹툰 성과와 마케팅 성과를 통합 조회하는 B2B 대시보드 개발</li>
+                  <li>조건별 필터링 및 상세 성과 조회 기능 개발</li>
+                  <li>비즈니스 지표 시각화를 위한 D3.js 기반 React 차트 및 공통 시각화 구조 개발</li>
+                  <li>운영 데이터와 분리된 B2B 고객 시연용 Demo 환경 구축</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="project">
+            <p class="project-kicker">Public Platform</p>
+            <h4>웹툰 연재 플랫폼</h4>
+            <p class="project-description">
+              오늘의웹툰은 작가가 웹툰 작품을 등록·공개하고 독자가 웹툰을 탐색, 열람할 수 있는 공개형 웹툰 연재 플랫폼입니다.
+              작품 분석 신청과 공모전 참여 기능을 통해 분석 대상 작품을 지속적으로 확보합니다.
+            </p>
+            <ul class="tech-list" aria-label="웹툰 연재 플랫폼 사용 기술">
+              <li>React</li><li>TypeScript</li><li>Recoil</li><li>Material-UI</li><li>Axios</li><li>Visx</li><li>Chart.js</li>
+            </ul>
+
+            <div class="detail-grid">
+              <h5 class="detail-label">역할</h5>
+              <div class="detail-content">
+                <ul class="plain-list">
+                  <li>신규 웹툰 플랫폼 FE 구축 및 운영</li>
+                  <li>서비스 고도화 및 신규 기능 개발</li>
+                  <li>프론트엔드 구조 및 성능 개선</li>
+                </ul>
+              </div>
+
+              <h5 class="detail-label">주요 업무</h5>
+              <div class="detail-content work-groups">
+                <section class="work-group">
+                  <h5>서비스 구축 및 기능 개발</h5>
+                  <ul class="plain-list">
+                    <li>신규 작품 확보를 위한 웹툰 연재 플랫폼 MVP 개발 및 출시</li>
+                    <li>대학생 웹툰 공모전 운영 페이지와 작품 접수·분석 신청 프로세스를 구축하여 2년간 확보 작품 수 약 10배 증가에 기여</li>
+                    <li>모바일·데스크톱 환경별 메인 페이지를 개편하고 반응형 UI 구현</li>
+                    <li>회원 인증 프로세스 개발 및 외부 인증 서비스 연동</li>
+                  </ul>
+                </section>
+                <section class="work-group">
+                  <h5>구조 및 성능 개선</h5>
+                  <ul class="plain-list">
+                    <li>Recoil과 Custom Hook을 활용해 API 응답 캐싱 구조를 구현하여 중복 API 요청 최소화</li>
+                    <li>컴포넌트 책임과 상태 관리 범위를 분리하여 불필요한 리렌더링 최소화</li>
+                    <li>이미지 크기 최적화로 평균 이미지 전송 용량을 약 40% 절감하고 Lazy Loading을 적용하여 초기 로딩 리소스 축소</li>
+                    <li>반복 UI를 공통 컴포넌트로 분리하여 중복 코드를 줄이고 화면 개발 및 유지보수 효율 개선</li>
+                  </ul>
+                </section>
+                <section class="work-group">
+                  <h5>데이터 수집 및 운영 개선</h5>
+                  <ul class="plain-list">
+                    <li>주요 사용자 행동에 대한 Amplitude 이벤트를 정의하고 로그 전송</li>
+                    <li>AWS CloudWatch 운영 로그를 활용한 서비스 오류 및 사용자 문의 원인 분석과 이슈 대응</li>
+                  </ul>
+                </section>
+              </div>
+            </div>
+          </article>
+
+          <article class="project">
+            <p class="project-kicker">Internal Operations</p>
+            <h4>웹툰 운영 백오피스</h4>
+            <p class="project-description">
+              웹툰 운영 백오피스는 내부 운영자가 작품 운영 정보, 데이터 분석 업무, 공모전 프로세스를 통합적으로 관리할 수 있도록
+              지원하는 백오피스 시스템입니다. 공모전과 같은 별도 운영 프로세스의 진행 현황과 판정 흐름도 함께 관리할 수 있도록 지원합니다.
+            </p>
+            <ul class="tech-list" aria-label="웹툰 운영 백오피스 사용 기술">
+              <li>React</li><li>Redux</li><li>Material-UI</li><li>SCSS</li><li>Axios</li><li>Chart.js</li>
+            </ul>
+
+            <div class="detail-grid">
+              <h5 class="detail-label">역할</h5>
+              <div class="detail-content">
+                <ul class="plain-list">
+                  <li>FE 기능 개발 및 유지보수</li>
+                  <li>기존 백오피스 플랫폼 기능 개선</li>
+                  <li>운영자 사용성 개선 및 신규 관리 페이지 개발</li>
+                </ul>
+              </div>
+
+              <h5 class="detail-label">주요 업무</h5>
+              <div class="detail-content">
+                <ul class="plain-list">
+                  <li>분석 보고서 화면 고도화를 통해 주요 지표의 가독성과 분석 결과 해석 편의성 개선</li>
+                  <li>공모전 운영 페이지 개발로 진행 단계 및 판정 상태 관리 흐름을 체계화하고 반복 운영 업무 일부 자동화</li>
+                  <li>작품 관리 및 분석 운영 플랫폼의 주요 운영 화면을 개선하여 작품 조회, 광고 검수, 분석 결과 확인 등 반복적인 내부 관리 업무의 효율성 개선</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="additional">
+        <header class="section-title">
+          <span class="section-index">03 / ADDITIONAL</span>
+          <h2>추가 경험</h2>
+        </header>
+
+        <article class="additional-entry">
+          <h3>웹툰 IP 기반 2.5D 스토리형 모바일 게임</h3>
+          <p class="project-description">
+            보유 웹툰 IP의 스토리와 캐릭터를 활용한 턴 진행 방식의 2.5D 모바일 게임입니다.
+            스토리와 연출을 데이터로 구성해 순차적으로 실행하도록 개발하고 iOS와 Android에 출시했습니다.
+          </p>
+          <ul class="tech-list" aria-label="모바일 게임 사용 기술">
+            <li>Unity</li><li>C#</li><li>JSON</li><li>iOS</li><li>Android</li>
+          </ul>
+          <div class="detail-grid">
+            <h5 class="detail-label">역할</h5>
+            <div class="detail-content">
+              <ul class="plain-list">
+                <li>Unity 기반 모바일 게임 클라이언트 개발</li>
+                <li>데이터 기반 게임 진행 구조 및 콘텐츠 연출 구현</li>
+                <li>iOS 및 Android 앱 출시와 배포 운영</li>
+              </ul>
+            </div>
+            <h5 class="detail-label">주요 업무</h5>
+            <div class="detail-content">
+              <ul class="plain-list">
+                <li>웹툰 IP 기반 2.5D 스토리형 모바일 게임 개발 및 iOS, Android 출시</li>
+                <li>스토리와 연출을 데이터로 구성하고 턴 단위로 실행하는 게임 진행 구조 구현</li>
+                <li>App Store와 Google Play 테스트, 심사 대응 및 배포 프로세스 담당</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="additional-entry">
+          <h3>개발 문화 및 온보딩</h3>
+          <div class="detail-grid">
+            <h5 class="detail-label">기여</h5>
+            <div class="detail-content">
+              <ul class="plain-list">
+                <li>팀 코드 리뷰에 참여하여 구현 방식과 코드 품질에 대한 피드백 제공</li>
+                <li>인턴 개발자를 위한 개발 환경 및 온보딩 문서를 작성하고 초기 과제 설계와 코드 리뷰 지원</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="additional-entry">
+          <h3>기타 프로젝트</h3>
+          <div class="detail-grid">
+            <h5 class="detail-label">개발</h5>
+            <div class="detail-content">
+              <ul class="plain-list">
+                <li>단축 URL을 생성하고 관리하는 링크 서비스의 프론트엔드 화면 개발</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="footer-contact">
+          <p>김동영 · Frontend Developer · Seoul, Korea</p>
+          <a href="mailto:Dongykim414@gmail.com">Dongykim414@gmail.com ↗</a>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

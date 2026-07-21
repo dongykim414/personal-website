@@ -1,5 +1,59 @@
 <!-- BEGIN:nextjs-agent-rules -->
-# This is NOT the Next.js you know
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
+# Web Resume Project Guidelines
+
+## Project goal
+
+이 프로젝트는 김동영 프론트엔드 개발자의 웹 이력서다.
+
+포트폴리오처럼 화려한 연출을 만드는 것이 아니라, 채용 담당자가 경력과 프로젝트를 빠르게 파악하고 개발 리더가 세부 업무를 읽을 수 있는 담백한 웹 문서를 만든다.
+
+## Core design principles
+
+* 이력 내용과 사실관계를 디자인보다 우선한다.
+* 기존의 왼쪽 프로필과 오른쪽 경력 본문으로 구성된 2단 레이아웃을 유지한다.
+* 장식적인 대형 그래픽, 과도한 애니메이션, 그라데이션, 강한 그림자를 사용하지 않는다.
+* 색상은 흰색, 회색, 짙은 본문색과 절제된 파란색 포인트를 중심으로 사용한다.
+* 전체 페이지는 전문적인 이력서이면서 웹에서 읽기 좋은 문서처럼 보여야 한다.
+* 사용자의 이력 문구를 임의로 축약하거나 사실을 추가하지 않는다.
+* 의미가 없는 예시 링크, 가짜 GitHub 주소, 가짜 수치를 만들지 않는다.
+
+## Implementation rules
+
+* 먼저 현재 프로젝트의 package.json, 폴더 구조, 라우팅과 스타일링 방식을 확인한다.
+* 기존 프레임워크와 스타일링 방식을 유지한다.
+* 현재 프로젝트가 Next.js이면 기존 App Router 또는 Pages Router 구조를 따른다.
+* 현재 프로젝트가 정적 HTML이면 불필요하게 React나 Next.js로 마이그레이션하지 않는다.
+* 새 프로덕션 의존성은 추가하지 않는다.
+* 반복되는 UI는 적절한 컴포넌트나 데이터 구조로 분리하되 지나치게 추상화하지 않는다.
+* 접근 가능한 시맨틱 HTML을 사용한다.
+* 장식 요소에는 aria-hidden="true"를 적용한다.
+* 기술 스택 태그는 실제 button 요소가 아니라 ul/li 구조를 유지한다.
+* 기술 태그에는 cursor: pointer나 button role을 적용하지 않는다.
+* desktop, tablet, mobile과 print 스타일을 모두 유지한다.
+
+## Quality checks
+
+작업을 마친 뒤 프로젝트에 존재하는 명령 중 적용 가능한 항목을 실행한다.
+
+* lint
+* typecheck
+* test
+* build
+
+브라우저 검증이 가능하면 다음 화면 크기를 확인한다.
+
+* Desktop: 1440 × 1000
+* Tablet: 768 × 1024
+* Mobile: 390 × 844
+
+다음 문제도 확인한다.
+
+* 가로 스크롤이 없어야 한다.
+* 긴 프로젝트 이름이나 기술명이 잘리지 않아야 한다.
+* 왼쪽 sticky 영역이 본문을 가리지 않아야 한다.
+* 타임라인 선과 노드가 끊기거나 어긋나지 않아야 한다.
+* 마지막 프로젝트 아래로 타임라인 선이 내려가지 않아야 한다.
+* 인쇄 시 불필요한 sticky, 배경, 버튼과 장식이 제거되어야 한다.
+
 <!-- END:nextjs-agent-rules -->
