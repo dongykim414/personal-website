@@ -1,4 +1,4 @@
-import { projects, type DetailBlock, type Project } from "./data";
+import type { DetailBlock, Project } from "./data";
 
 function TechList({ items, label }: { items: string[]; label: string }) {
   return (
@@ -27,11 +27,14 @@ export function DetailGrid({ details }: { details: DetailBlock[] }) {
         <div className="detail-row" key={detail.label}>
           <h5 className="detail-label">{detail.label}</h5>
           <div className="detail-content">
+            {detail.description ? (
+              <p className="detail-description">{detail.description}</p>
+            ) : null}
             {detail.result ? (
               <div className="service-result">
-                <strong>{detail.result.title}</strong>
+                {detail.result.title ? <strong>{detail.result.title}</strong> : null}
                 {detail.result.body}
-                <small>{detail.result.note}</small>
+                {detail.result.note ? <small>{detail.result.note}</small> : null}
               </div>
             ) : null}
             {detail.items ? <PlainList items={detail.items} /> : null}
@@ -80,7 +83,7 @@ export function ProjectExperience({ project }: { project: Project }) {
   );
 }
 
-export function ProjectTimeline() {
+export function ProjectTimeline({ projects }: { projects: Project[] }) {
   return (
     <div className="project-timeline">
       {projects.map((project) => (
@@ -90,12 +93,12 @@ export function ProjectTimeline() {
   );
 }
 
-export function ExperienceSection() {
+export function ExperienceSection({ projects }: { projects: Project[] }) {
   return (
     <section className="section" id="experience">
       <header className="section-title">
         <span className="section-index" aria-hidden="true">
-          <span className="section-number">02</span>
+          <span className="section-number">01</span>
         </span>
         <h2>업무 경력</h2>
       </header>
@@ -108,7 +111,7 @@ export function ExperienceSection() {
           </div>
           <span className="company-period">2021.05 — 2025.02</span>
         </header>
-        <ProjectTimeline />
+        <ProjectTimeline projects={projects} />
       </div>
     </section>
   );

@@ -96,6 +96,29 @@ a {
   letter-spacing: 0.04em;
 }
 
+.resume-switcher {
+  display: flex;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+}
+
+.resume-switcher a {
+  padding: 3px 9px;
+  border-radius: 5px;
+  color: var(--muted);
+  font-size: 10.5px;
+  font-weight: 720;
+  line-height: 1.6;
+  text-decoration: none;
+}
+
+.resume-switcher a[aria-current="page"] {
+  background: var(--ink);
+  color: var(--paper);
+}
+
 .page {
   display: grid;
   width: min(calc(100% - 40px), var(--max));
@@ -188,6 +211,8 @@ a {
 .skill-list,
 .tech-list {
   display: flex;
+  min-width: 0;
+  max-width: 100%;
   flex-wrap: wrap;
   gap: 7px 8px;
 }
@@ -195,6 +220,8 @@ a {
 .skill-list li,
 .tech-list li {
   display: inline-flex;
+  min-width: 0;
+  max-width: 100%;
   align-items: center;
   padding: 5px 9px;
   border: 1px solid #dfe3e7;
@@ -204,6 +231,7 @@ a {
   font-size: 10px;
   font-weight: 650;
   line-height: 1.25;
+  overflow-wrap: anywhere;
   white-space: nowrap;
 }
 
@@ -285,17 +313,6 @@ a {
   font-weight: 800;
   line-height: 1.25;
   letter-spacing: -0.035em;
-}
-
-.intro {
-  max-width: 740px;
-  color: var(--body);
-  font-size: 15px;
-  line-height: 1.96;
-}
-
-.intro p {
-  margin: 0;
 }
 
 .company-head {
@@ -485,6 +502,13 @@ a {
   min-width: 0;
 }
 
+.detail-description {
+  margin: 0 0 10px;
+  color: #34404b;
+  font-size: 13px;
+  line-height: 1.77;
+}
+
 .plain-list li {
   position: relative;
   padding-left: 17px;
@@ -598,24 +622,26 @@ a {
   }
 
   .skill-list {
-    display: block;
-    line-height: 1.9;
+    display: flex;
+    min-width: 0;
+    max-width: 100%;
+    flex-wrap: wrap;
+    gap: 7px 8px;
   }
 
   .skill-list li {
-    display: inline;
-    padding: 0;
-    border: 0;
-    background: transparent;
+    display: inline-flex;
+    min-width: 0;
+    max-width: 100%;
+    padding: 3px 7px;
+    border: 1px solid #dfe3e7;
+    border-radius: 6px;
+    background: var(--chip);
     color: #59646f;
     font-size: 10.5px;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
     white-space: normal;
-  }
-
-  .skill-list li:not(:last-child)::after {
-    padding: 0 4px;
-    color: #a5adb5;
-    content: "·";
   }
 
   .page-nav {
@@ -721,7 +747,8 @@ a {
   }
 
   .utility-bar,
-  .page-nav {
+  .page-nav,
+  .resume-switcher {
     display: none !important;
   }
 

@@ -1,17 +1,21 @@
 import { DetailGrid } from "./ExperienceSection";
-import { additionalExperiences } from "./data";
+import type { AdditionalExperienceData } from "./data";
 
-export function AdditionalExperience() {
+export function AdditionalExperience({
+  experiences,
+}: {
+  experiences: AdditionalExperienceData[];
+}) {
   return (
     <section className="section" id="additional">
       <header className="section-title">
         <span className="section-index" aria-hidden="true">
-          <span className="section-number">03</span>
+          <span className="section-number">02</span>
         </span>
         <h2>추가 경험</h2>
       </header>
 
-      {additionalExperiences.map((experience) => (
+      {experiences.map((experience) => (
         <article className="additional-entry" key={experience.title}>
           <h3>{experience.title}</h3>
           {experience.description ? (

@@ -1,18 +1,15 @@
-import { coreStack } from "./data";
-
-export function ResumeSidebar() {
+export function ResumeSidebar({ coreStack }: { coreStack: string[] }) {
   return (
     <aside className="sidebar" aria-label="프로필과 연락처">
       <div className="identity">
         <p className="eyebrow">Frontend Developer</p>
         <h1>김동영</h1>
         <p className="identity-role">
-          사용자 경험과 운영 효율을 함께 개선하는 프론트엔드 개발자
+          제품을 만들 때의 완성도와, 출시 후 쓰고 운영하고 고치는 데 드는 품을
+          함께 생각합니다.
         </p>
         <p className="identity-summary">
-          React와 TypeScript 기반의 공개 플랫폼, B2B 데이터 대시보드, 내부 운영
-          도구를 개발하고 운영했습니다. 서비스의 목적과 데이터 흐름을 이해하고,
-          팀이 유지보수하기 좋은 구조로 구현하는 것을 중요하게 생각합니다.
+          작가와 독자가 이용하는 공개 플랫폼부터, 마케터가 성과를 읽는 분석 제품과 운영자가 서비스를 관리하는 백오피스까지 개발했습니다. 서로 다른 사용자의 목적과 업무 흐름을 제품으로 옮기며, 신규 서비스 구축부터 출시 이후 개선과 운영까지 경험했습니다.
         </p>
       </div>
 
@@ -37,20 +34,14 @@ export function ResumeSidebar() {
 
       <nav className="side-block page-nav" aria-label="페이지 목차">
         <p className="side-label">On this page</p>
-        <a href="#about">
-          소개 <span>01</span>
-        </a>
         <a href="#experience">
-          업무 경력 <span>02</span>
+          업무 경력 <span>01</span>
         </a>
         <a href="#additional">
-          추가 경험 <span>03</span>
-        </a>
-        <a href="#principles">
-          업무 방식 <span>04</span>
+          추가 경험 <span>02</span>
         </a>
         <a href="#contact">
-          연락처 <span>05</span>
+          연락처 <span>03</span>
         </a>
       </nav>
     </aside>

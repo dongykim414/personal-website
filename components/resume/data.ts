@@ -1,11 +1,12 @@
 export type DetailBlock = {
   label: string;
+  description?: string;
   items?: string[];
   groups?: Array<{ title: string; items: string[] }>;
   result?: {
-    title: string;
+    title?: string;
     body: string;
-    note: string;
+    note?: string;
   };
 };
 
@@ -16,6 +17,19 @@ export type Project = {
   description: string;
   tech: string[];
   details: DetailBlock[];
+};
+
+export type AdditionalExperienceData = {
+  title: string;
+  description?: string;
+  tech?: string[];
+  details: DetailBlock[];
+};
+
+export type ResumeData = {
+  coreStack: string[];
+  projects: Project[];
+  additionalExperiences: AdditionalExperienceData[];
 };
 
 export const coreStack = [
@@ -57,7 +71,7 @@ export const projects: Project[] = [
         result: {
           title: "웹툰메트릭을 활용한 마케팅 캠페인 결과",
           body: "2024년 상반기 5개 캠페인에서 캠페인당 평균 독자 5,800명 획득, 평균 순위 20위 상승, 평균 매출 69% 증가를 기록했습니다.",
-          note: "개인 개발 성과가 아닌 서비스 활용 사례입니다.",
+          note: "고객 활용 성과입니다.",
         },
       },
       {
@@ -148,7 +162,7 @@ export const projects: Project[] = [
   },
 ];
 
-export const additionalExperiences = [
+export const additionalExperiences: AdditionalExperienceData[] = [
   {
     title: "웹툰 IP 기반 2.5D 스토리형 모바일 게임",
     description:
@@ -195,3 +209,9 @@ export const additionalExperiences = [
     ],
   },
 ];
+
+export const resumeData: ResumeData = {
+  coreStack,
+  projects,
+  additionalExperiences,
+};
