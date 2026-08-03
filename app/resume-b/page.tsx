@@ -1,6 +1,5 @@
-import { ResumeDocument } from "@/components/resume/ResumeDocument";
-import { resumeBData } from "@/components/resume/data-resume-b";
+import { redirect } from "next/navigation";
 
 export default function ResumeBPage() {
-  return <ResumeDocument data={resumeBData} variant="resume-b" />;
+  redirect("/");
 }

@@ -2,17 +2,16 @@ import { AdditionalExperience } from "./AdditionalExperience";
 import { ExperienceSection } from "./ExperienceSection";
 import { ResumeSidebar } from "./ResumeSidebar";
 import type { ResumeData } from "./data";
-import { UtilityBar, type ResumeVariant } from "./UtilityBar";
+import { UtilityBar } from "./UtilityBar";
 
 type ResumeDocumentProps = {
   data: ResumeData;
-  variant: ResumeVariant;
 };
 
-export function ResumeDocument({ data, variant }: ResumeDocumentProps) {
+export function ResumeDocument({ data }: ResumeDocumentProps) {
   return (
     <>
-      <UtilityBar variant={variant} />
+      <UtilityBar />
 
       <main className="page" id="top">
         <ResumeSidebar coreStack={data.coreStack} />
