@@ -1,6 +1,5 @@
-import { ResumeDocument } from "@/components/resume/ResumeDocument";
-import { resumeData } from "@/components/resume/data";
+import { PortfolioHome } from "@/components/portfolio/PortfolioHome";
 
 export default function Home() {
-  return <ResumeDocument data={resumeData} />;
+  return <PortfolioHome />;
 }

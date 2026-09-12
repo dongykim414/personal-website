@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { DetailBlock, Project } from "./data";
 
 function TechList({ items, label }: { items: string[]; label: string }) {
@@ -78,6 +79,7 @@ export function ProjectExperience({ project }: { project: Project }) {
         <p className="project-description">{project.description}</p>
         <TechList items={project.tech} label={`${project.title} 사용 기술`} />
         <DetailGrid details={project.details} />
+        {(project.id === "challenge-today" || project.id === "webtoon-metric") && <Link className="resume-case-link" href={`/projects/${project.id}`}>문제 해결 과정과 데모 보기 →</Link>}
       </div>
     </article>
   );
