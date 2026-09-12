@@ -11,7 +11,7 @@
   --chip: #f0f2f4;
   --max: 1180px;
   --sidebar: 292px;
-  --sans: Inter, Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", Arial, sans-serif;
+  --sans: Inter, Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", Arial, sans-serif;
   --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 }
 
