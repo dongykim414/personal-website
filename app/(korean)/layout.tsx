@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import { LanguageProvider } from "@/components/i18n/LanguageProvider";
 
-import "./globals.css";
+import "../globals.css";
 
 export const metadata: Metadata = {
   title: "김동영 | Frontend Developer",
@@ -20,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <body><LanguageProvider locale="ko">{children}</LanguageProvider></body>
     </html>
   );
 }

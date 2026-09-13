@@ -28,6 +28,22 @@
 .brandName { display: grid; font-size: 14px; line-height: 1.5; font-weight: 700; }
 .brandName > span { color: var(--muted); font-size: 12px; font-weight: 400; }
 .topNav { display: flex; gap: 28px; align-items: center; }
+.languageSwitch { flex-shrink: 0; border: 1px solid var(--line); border-radius: 5px; padding: 8px 10px; text-decoration: none; font-size: 12px; color: var(--muted); white-space: nowrap; }
+.topNav { margin-left: auto; }
+:global(html[lang="ko"]) .languageSwitch > span[lang="ko"], :global(html[lang="en"]) .languageSwitch > span[lang="en"] { color: var(--accent); font-weight: 700; }
+:global(html[lang="en"]) .site { overflow-wrap: anywhere; }
+:global(html[lang="en"]) .profile .name { font-size: 43px; letter-spacing: -.045em; }
+:global(html[lang="en"]) .flowDiagram strong { font-size: 12px; }
+:global(html[lang="en"]) .metricSummary dd small { display: block; margin: 4px 0 0; font-size: 11px; letter-spacing: 0; }
+:global(html[lang="en"]) .demoHeader { flex-wrap: wrap; }
+:global(html[lang="en"]) .samplePage > strong { font-size: clamp(14px, 1.7vw, 21px); }
+:global(html[lang="en"]) .handleLabel { font-size: 10px; }
+:global(html[lang="en"]) .reorderControls { grid-template-columns: 1fr 1.8fr 1fr; }
+@media (max-width: 720px) {
+  .headerInner { flex-wrap: wrap; gap: 8px 16px; padding: 12px 0; }
+  .headerInner > .topNav { order: 3; width: 100%; justify-content: space-between; gap: 12px; }
+  .languageSwitch { margin-left: auto; }
+}
 .topNav > a { font-size: 14px; font-weight: 550; text-decoration: none; padding: 12px 0; color: var(--muted); }
 .topNav > a[aria-current="page"] { color: var(--accent); }
 .topNav > .headerContact { display: flex; align-items: center; gap: 8px; border-left: 1px solid var(--line); padding-left: 28px; color: var(--ink); }
