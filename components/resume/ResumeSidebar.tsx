@@ -2,6 +2,8 @@
 
 import { useLanguage } from "@/components/i18n/LanguageProvider";
 
+import { introduction } from "./data-current";
+
 export function ResumeSidebar({ coreStack }: {
     coreStack: string[];
 }) {
@@ -10,8 +12,9 @@ export function ResumeSidebar({ coreStack }: {
       <div className="identity">
         <p className="eyebrow">Frontend Developer</p>
         <h1>{t("김동영")}</h1>
-        <p className="identity-role">{t("사용자 경험을 구현하고, 데이터의 흐름을 설계합니다.")}</p>
-        <p className="identity-summary">{t("작가와 독자가 이용하는 공개 플랫폼부터, 마케터가 성과를 읽는 분석 제품과 운영자가 서비스를 관리하는 백오피스까지 개발했습니다. 서로 다른 사용자의 목적과 업무 흐름을 제품으로 옮기며, 신규 서비스 구축부터 출시 이후 개선과 운영까지 경험했습니다.")}</p>
+        <p className="identity-role">{t("오늘의웹툰의 첫 프론트엔드 개발자로 합류했습니다.")}</p>
+        <p className="identity-summary">{t("웹툰 연재 플랫폼의 초기 MVP부터 출시 후 운영까지 참여하고, 작품과 마케팅 데이터를 활용한 B2B 분석 서비스와 사내 운영 도구를 개발했습니다.")}</p>
+        <p className="identity-summary">{t(introduction[1])}</p>
       </div>
 
       <section className="side-block">
@@ -20,7 +23,7 @@ export function ResumeSidebar({ coreStack }: {
           <li>
             <a href="mailto:Dongykim414@gmail.com">Dongykim414@gmail.com</a>
           </li>
-          <li>{t("경력 3년 9개월")}</li>
+          <li><a href="tel:01053579878">010-5357-9878</a></li>
         </ul>
       </section>
 
@@ -33,11 +36,12 @@ export function ResumeSidebar({ coreStack }: {
 
       <nav className="side-block page-nav" aria-label={t("페이지 목차")}>
         <p className="side-label">On this page</p>
-        <a href="#experience">{t("업무 경력")}<span>01</span>
+        <a href="#experience">{t("경력 및 주요 프로젝트")}<span>01</span>
         </a>
-        <a href="#additional">{t("추가 경험")}<span>02</span>
+        <a href="#additional">{t("기술 및 추가 경험")}<span>02</span>
         </a>
-        <a href="#contact">{t("연락처")}<span>03</span>
+        <a href="#implementations">{t("프로젝트에서 실제로 한 일")}<span>03</span></a>
+        <a href="#contact">{t("연락처")}<span>04</span>
         </a>
       </nav>
     </aside>);

@@ -1,2 +1,1 @@
-import { PortfolioHome } from "@/components/portfolio/PortfolioHome";
-export default function EnglishHome() { return <PortfolioHome />; }
+export { default, metadata } from "./resume/page";

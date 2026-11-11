@@ -2,6 +2,7 @@
 
 import { useLanguage } from "@/components/i18n/LanguageProvider";
 
+import { introduction } from "@/components/resume/data-current";
 import Image from "next/image";
 import Link from "@/components/i18n/LocalizedLink";
 import * as koreanContent from "./content";
@@ -33,8 +34,7 @@ export function PortfolioHome() {
         <section id="about" className={styles.introduction}>
           <p className={styles.eyebrow}>ABOUT</p>
           <h2>{t("복잡한 요구사항을")}<br /><span>{t("명확한 사용자 흐름으로.")}</span></h2>
-          <p>{t("스타트업의 첫 프론트엔드 개발자로 서비스 초기 구축부터 출시와 운영까지 참여했습니다. 독자와 작가가 사용하는")} <strong>{t("웹툰 플랫폼")}</strong>{t(", 고객이 성과를 해석하는")} <strong>{t("B2B 데이터 제품")}</strong>{t("을 만들었습니다.")}</p>
-          <p>{t("React·TypeScript로 핵심 사용자 흐름을 구현하고, 반복되는 문제를 공통 데이터 구조와 재사용 가능한 컴포넌트로 정리했습니다.")}</p>
+          {introduction.map((paragraph) => <p key={paragraph}>{t(paragraph)}</p>)}
           <div className={styles.careerStrip}><span><strong>{profile.career}</strong>{t("실무 경험")}</span><span><strong>B2C & B2B</strong>{t("제품 구축·운영")}</span><span><strong>React + TS</strong>{t("주요 개발 환경")}</span></div>
         </section>
 

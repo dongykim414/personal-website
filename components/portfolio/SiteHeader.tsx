@@ -16,9 +16,7 @@ export function SiteHeader() {
     <div className={styles.headerInner}>
       <Link className={styles.brand} href="/" aria-label={t("김동영 홈")}><span className={styles.brandMark}>dy<span>.</span></span><span className={styles.brandName}>{t("김동영")}<span>Frontend Developer</span></span></Link>
       <nav className={styles.topNav} aria-label={t("주 메뉴")}>
-        <Link href="/" aria-current={path === "/" ? "page" : undefined}>{t("소개")}</Link>
-        <Link href="/#projects" aria-current={path.startsWith("/projects/") ? "page" : undefined}>{t("프로젝트")}</Link>
-        <Link href="/resume" aria-current={path === "/resume" ? "page" : undefined}>{t("이력서")}</Link>
+        <Link href="/" aria-current={path === "/" || path === "/resume" ? "page" : undefined}>{t("이력서")}</Link>
         <a className={styles.headerContact} href="mailto:Dongykim414@gmail.com"><span>{t("연락하기")}</span><Icon name="external"/></a>
       </nav>
       <NextLink className={styles.languageSwitch} href={languagePath} hrefLang={locale === "en" ? "ko" : "en"} aria-label={locale === "en" ? "Switch to Korean" : "Switch to English"} onClick={(event) => {

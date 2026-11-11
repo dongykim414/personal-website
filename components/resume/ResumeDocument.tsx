@@ -2,7 +2,7 @@
 
 import { useLanguage } from "@/components/i18n/LanguageProvider";
 
-import Link from "@/components/i18n/LocalizedLink";
+import { implementations, implementationIntro } from "./data-current";
 import { AdditionalExperience } from "./AdditionalExperience";
 import { ExperienceSection } from "./ExperienceSection";
 import { ResumeSidebar } from "./ResumeSidebar";
@@ -24,15 +24,15 @@ export function ResumeDocument({ data: originalData }: ResumeDocumentProps) {
         <ResumeSidebar coreStack={data.coreStack}/>
         <div className="content">
           <div className={styles.resumeToolbar}>
-            <Link href="/" className={styles.textLink}><Icon name="back"/>{t("소개와 프로젝트")}</Link>
             <div><a href="/documents/resume.pdf" download={t("김동영_프론트엔드_이력서.pdf")} className={styles.smallButton}><Icon name="download"/>{t("PDF 다운로드")}</a><PrintButton /></div>
           </div>
           <ExperienceSection projects={data.projects}/>
-          <AdditionalExperience experiences={data.additionalExperiences}/>
+          <AdditionalExperience id="additional" number="02" title={t("기술 및 추가 경험")} experiences={data.additionalExperiences}/>
+          <AdditionalExperience id="implementations" number="03" title={t("프로젝트에서 실제로 한 일")} introduction={t(implementationIntro)} experiences={content(implementations)}/>
 
           <section className="section contact-section" id="contact">
             <div className="footer-contact">
-              <p>{t("김동영 · Frontend Developer · Seoul, Korea")}</p>
+              <p>{t("김동영 · Frontend Developer")}</p>
               <a href="mailto:Dongykim414@gmail.com">
                 Dongykim414@gmail.com ↗
               </a>

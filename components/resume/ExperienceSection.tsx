@@ -2,7 +2,6 @@
 
 import { useLanguage } from "@/components/i18n/LanguageProvider";
 
-import Link from "@/components/i18n/LocalizedLink";
 import type { DetailBlock, Project } from "./data";
 function TechList({ items, label }: {
     items: string[];
@@ -62,9 +61,8 @@ export function ProjectExperience({ project }: {
           </a>
         </h4>
         <p className="project-description">{project.description}</p>
-        <TechList items={project.tech} label={t("{0} 사용 기술", project.title)}/>
-        <DetailGrid details={project.details}/>
-        {(project.id === "challenge-today" || project.id === "webtoon-metric") && <Link className="resume-case-link" href={`/projects/${project.id}`}>{t("문제 해결 과정과 데모 보기 →")}</Link>}
+        {project.tech.length > 0 && <TechList items={project.tech} label={t("{0} 사용 기술", project.title)}/>}
+        {project.details.length > 0 && <DetailGrid details={project.details}/>}
       </div>
     </article>);
 }
@@ -84,13 +82,13 @@ export function ExperienceSection({ projects }: {
         <span className="section-index" aria-hidden="true">
           <span className="section-number">01</span>
         </span>
-        <h2>{t("업무 경력")}</h2>
+        <h2>{t("경력 및 주요 프로젝트")}</h2>
       </header>
 
       <div className="company">
         <header className="company-head">
           <div className="company-name-line">
-            <h3>{t("오늘의 웹툰")}</h3>
+            <h3>{t("오늘의웹툰")}</h3>
             <span className="company-role">Frontend Developer</span>
           </div>
           <span className="company-period">2021.05 — 2025.02</span>
